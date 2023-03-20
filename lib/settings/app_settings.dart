@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
-
 enum ThreeState { first, second, third }
 
-class AppSettings extends ChangeNotifier {
+class AppSettings {
   int _counter = 0;
   bool _selection = false;
   ThreeState _state = ThreeState.first;
@@ -19,7 +17,6 @@ class AppSettings extends ChangeNotifier {
 
   void toggleSelection() {
     _selection = !_selection;
-    notifyListeners();
   }
 
   void toggleState() {
