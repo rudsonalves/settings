@@ -14,21 +14,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final settings = AppSettings();
 
-  void _incrementCounter() {
-    setState(() {
-      settings.increment();
-    });
-  }
-
-  void _toggleSelection() {
-    setState(() {
-      settings.toggleSelection();
-    });
-  }
-
-  void _toggleState() {
-    setState(() {
-      settings.toggleState();
+  @override
+  void initState() {
+    super.initState();
+    settings.addListener(() {
+      setState(() {});
     });
   }
 
@@ -46,7 +36,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: _incrementCounter,
+                  onPressed: settings.increment,
                   child: const Icon(Icons.add),
                 ),
                 const SizedBox(width: 30),
@@ -60,7 +50,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: _toggleSelection,
+                  onPressed: settings.toggleSelection,
                   child: const Text('Toggle'),
                 ),
                 const SizedBox(width: 30),
@@ -75,7 +65,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: _toggleState,
+                  onPressed: settings.toggleState,
                   child: const Text('Toggle'),
                 ),
                 const SizedBox(width: 30),
