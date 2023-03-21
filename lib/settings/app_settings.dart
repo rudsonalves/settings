@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 enum ThreeState { first, second, third }
 
 class AppSettings {
-  ValueNotifier counter$ = ValueNotifier(0);
-  ValueNotifier selection$ = ValueNotifier(false);
-  ValueNotifier state$ = ValueNotifier(ThreeState.first);
+  ValueNotifier<int> counter$ = ValueNotifier(0);
+  ValueNotifier<bool> selection$ = ValueNotifier(false);
+  ValueNotifier<ThreeState> state$ = ValueNotifier(ThreeState.first);
 
   int get counter => counter$.value;
 

@@ -15,20 +15,6 @@ class _HomePageState extends State<HomePage> {
   final settings = AppSettings();
 
   @override
-  void initState() {
-    super.initState();
-    settings.counter$.addListener(() {
-      setState(() {});
-    });
-    settings.selection$.addListener(() {
-      setState(() {});
-    });
-    settings.state$.addListener(() {
-      setState(() {});
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -46,9 +32,13 @@ class _HomePageState extends State<HomePage> {
                   child: const Icon(Icons.add),
                 ),
                 const SizedBox(width: 30),
-                Text(
-                  'Counter: ${settings.counter}',
-                ),
+                AnimatedBuilder(
+                    animation: settings.counter$,
+                    builder: (context, child) {
+                      return Text(
+                        'Counter: ${settings.counter}',
+                      );
+                    }),
               ],
             ),
             const SizedBox(height: 30),
@@ -60,9 +50,14 @@ class _HomePageState extends State<HomePage> {
                   child: const Text('Toggle'),
                 ),
                 const SizedBox(width: 30),
-                Text(
-                  'Selection: ${settings.selection}',
-                  style: Theme.of(context).textTheme.titleMedium,
+                AnimatedBuilder(
+                  animation: settings.selection$,
+                  builder: (context, child) {
+                    return Text(
+                      'Selection: ${settings.selection}',
+                      style: Theme.of(context).textTheme.titleMedium,
+                    );
+                  },
                 ),
               ],
             ),
@@ -75,9 +70,14 @@ class _HomePageState extends State<HomePage> {
                   child: const Text('Toggle'),
                 ),
                 const SizedBox(width: 30),
-                Text(
-                  'State: ${settings.state.name}',
-                  style: Theme.of(context).textTheme.titleMedium,
+                AnimatedBuilder(
+                  animation: settings.state$,
+                  builder: (context, child) {
+                    return Text(
+                      'State: ${settings.state.name}',
+                      style: Theme.of(context).textTheme.titleMedium,
+                    );
+                  },
                 ),
               ],
             ),
