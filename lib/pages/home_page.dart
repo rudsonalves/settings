@@ -17,7 +17,13 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    settings.addListener(() {
+    settings.counter$.addListener(() {
+      setState(() {});
+    });
+    settings.selection$.addListener(() {
+      setState(() {});
+    });
+    settings.state$.addListener(() {
       setState(() {});
     });
   }

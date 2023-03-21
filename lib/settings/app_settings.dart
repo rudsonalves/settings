@@ -2,39 +2,32 @@ import 'package:flutter/material.dart';
 
 enum ThreeState { first, second, third }
 
-class AppSettings extends ChangeNotifier {
-  int _counter = 0;
-  bool _selection = false;
-  ThreeState _state = ThreeState.first;
+class AppSettings {
+  ValueNotifier counter$ = ValueNotifier(0);
+  ValueNotifier selection$ = ValueNotifier(false);
+  ValueNotifier state$ = ValueNotifier(ThreeState.first);
 
-  int get counter => _counter;
+  int get counter => counter$.value;
 
-  bool get selection => _selection;
+  bool get selection => selection$.value;
 
-  ThreeState get state => _state;
+  ThreeState get state => state$.value;
 
-  void increment() {
-    _counter++;
-    notifyListeners();
-  }
+  void increment() => counter$.value++;
 
-  void toggleSelection() {
-    _selection = !_selection;
-    notifyListeners();
-  }
+  void toggleSelection() => selection$.value = !selection$.value;
 
   void toggleState() {
-    switch (_state) {
+    switch (state$.value) {
       case ThreeState.first:
-        _state = ThreeState.second;
+        state$.value = ThreeState.second;
         break;
       case ThreeState.second:
-        _state = ThreeState.third;
+        state$.value = ThreeState.third;
         break;
       case ThreeState.third:
-        _state = ThreeState.first;
+        state$.value = ThreeState.first;
         break;
     }
-    notifyListeners();
   }
 }
