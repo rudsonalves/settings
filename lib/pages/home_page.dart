@@ -32,9 +32,9 @@ class _HomePageState extends State<HomePage> {
                   child: const Icon(Icons.add),
                 ),
                 const SizedBox(width: 30),
-                AnimatedBuilder(
-                    animation: settings.counter$,
-                    builder: (context, child) {
+                ValueListenableBuilder<int>(
+                    valueListenable: settings.counter$,
+                    builder: (context, value, child) {
                       return Text(
                         'Counter: ${settings.counter}',
                       );
@@ -50,9 +50,9 @@ class _HomePageState extends State<HomePage> {
                   child: const Text('Toggle'),
                 ),
                 const SizedBox(width: 30),
-                AnimatedBuilder(
-                  animation: settings.selection$,
-                  builder: (context, child) {
+                ValueListenableBuilder<bool>(
+                  valueListenable: settings.selection$,
+                  builder: (context, value, child) {
                     return Text(
                       'Selection: ${settings.selection}',
                       style: Theme.of(context).textTheme.titleMedium,
@@ -70,9 +70,9 @@ class _HomePageState extends State<HomePage> {
                   child: const Text('Toggle'),
                 ),
                 const SizedBox(width: 30),
-                AnimatedBuilder(
-                  animation: settings.state$,
-                  builder: (context, child) {
+                ValueListenableBuilder<ThreeState>(
+                  valueListenable: settings.state$,
+                  builder: (context, value, child) {
                     return Text(
                       'State: ${settings.state.name}',
                       style: Theme.of(context).textTheme.titleMedium,
